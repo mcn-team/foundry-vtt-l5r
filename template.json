@@ -1,0 +1,122 @@
+{
+    "Actor": {
+        "types": ["character"],
+        "character": {
+            "informations": {
+                "clan": "",
+                "family": "",
+                "school": ""
+            },
+            "health": {
+                "value": 10,
+                "min": 0,
+                "max": 10
+            },
+            "power": {
+                "value": 5,
+                "min": 0,
+                "max": 5
+            },
+            "attributes": {
+                "rank": {
+                    "value": 1,
+                    "max": 10
+                },
+                "xp": {
+                    "value": 40,
+                    "max": 1000
+                },
+                "insight": {
+                    "value": 100,
+                    "max": 1000
+                },
+                "honor": {
+                    "value": 0,
+                    "max": 10
+                },
+                "glory": {
+                    "value": 1,
+                    "max": 10
+                },
+                "status": {
+                    "value": 1,
+                    "max": 10
+                },
+                "taint": {
+                    "value": 0,
+                    "max": 10
+                }
+            },
+            "rings": {
+                "earth": {
+                    "stamina": {
+                        "type": "physical",
+                        "value": 2
+                    },
+                    "willpower": {
+                        "type": "mental",
+                        "value": 2
+                    },
+                    "value": 2
+                },
+                "air": {
+                    "reflexes": {
+                        "type": "physical",
+                        "value": 2
+                    },
+                    "awareness": {
+                        "type": "mental",
+                        "value": 2
+                    },
+                    "value": 2
+                },
+                "fire": {
+                    "agility": {
+                        "type": "physical",
+                        "value": 2
+                    },
+                    "intelligence": {
+                        "type": "mental",
+                        "value": 2
+                    },
+                    "value": 2
+                },
+                "water": {
+                    "strength": {
+                        "type": "physical",
+                        "value": 2
+                    },
+                    "perception": {
+                        "type": "mental",
+                        "value": 2
+                    },
+                    "value": 2
+                },
+                "void": {
+                    "test": {
+                        "value": 1
+                    },
+                    "value": 2,
+                    "current": 2
+                }
+            },
+            "skills": {
+                "kenjutsu": {
+                    "value": 0,
+                    "trait": "agility",
+                    "sub-type": "weapon",
+                    "emphases": 0
+                }
+            }
+        }
+    },
+    "Item": {
+        "types": ["item"],
+        "item": {
+            "description": "",
+            "quantity": 1,
+            "weight": 0,
+            "attributes": {}
+        }
+    }
+}
