@@ -33,3 +33,33 @@ export class SimpleActor extends Actor {
     return data;
   }
 }
+
+/* -------------------------------------------- */
+
+/**
+ * An Handlebars helper to add numbers
+ */
+Handlebars.registerHelper('add', function (value1, value2) {
+
+  return value1 + value2;
+});
+
+/* -------------------------------------------- */
+
+/**
+ * An Handlebars helper to multiply numbers
+ */
+Handlebars.registerHelper('multiply', function (value1, value2) {
+
+  return value1 * value2;
+});
+
+/* -------------------------------------------- */
+
+/**
+ * An Handlebars helper to multiply numbers
+ */
+Handlebars.registerHelper('concat', function (value1, value2) {
+
+  return value1.concat(value2);
+});

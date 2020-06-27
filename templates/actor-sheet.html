@@ -1,104 +1,214 @@
-<form class="actor-sheet {{cssClass}}" autocomplete="off">
+<form class="actor-sheet {{cssClass}}" autocomplete="off" style="overflow: hidden scroll;">
     <header class="sheet-header">
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
     </header>
 
     <section class="items">
-            <h3 class="sheet-section-header">Informations de base</h3>
-    <input type="checkbox" name="attr_basic_info_hidden" class="sheet-hide"> 
-    <div class="sheet-subheader-content">
-    <table class="sheet-character-table">
-        <tr>
-            <td colspan="1"><input type="text" name="data.informations.clan" value="{{data.informations.clan}}"></td>
-            <td colspan="1"><input type="text" name="data.informations.family" value="{{data.informations.family}}"></td>
-            <td colspan="2" width="320px"><input type="text" name="data.informations.school" value="{{data.informations.school}}"></td>
-            <td colspan="1"><input type="text" name="data.attributes.rank.value" value="{{data.attributes.rank.value}}" disabled></td>
-        </tr>
-        <tr>
-            <td colspan="1"><span class="sheet-info-label">Clan</span></td>
-            <td colspan="1"><span class="sheet-info-label">Famille</span></td>
-            <td colspan="2"><span class="sheet-info-label">Ecole</span></td>
-            <td colspan="1"><span class="sheet-info-label">Rang</span></td>
-        </tr>
-        <tr>
-            <td colspan="4"><input type="text" name="data.attributes.insight.value" value="{{data.attributes.insight.value}}" disabled></td>
-            <td><input type="text" name="data.attributes.xp.value" value="{{data.attributes.xp.value}}" ></td>
-        </tr>
-        <tr>
-            <td colspan="4"><span class="sheet-info-label">Réputation</span></td>
-            <td><span class="sheet-info-label">Points d'expérience</span></td>
-        </tr>
-    </table>
-    </div> <!--Character Basic Information -->
-        <h3 class="sheet-section-header">Statistiques de base</h3>
-    <input type="checkbox" name="attr_basic_stats_hidden" class="sheet-hide"> 
-    <div class="sheet-subheader-content">
-    <table>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/righteousness.png"><br \>Droiture</td>
-            <td colspan="6" rowspan="7" class="sheet-rings">
-                <input disabled type="text" data-dtype="Number" name="data.rings.earth.value" value="{{data.rings.earth.value}}">
-                <input disabled type="text" data-dtype="Number" name="data.rings.air.value" value="{{data.rings.air.value}}"><br \>
-                <input disabled type="text" data-dtype="Number" name="data.rings.water.value" value="{{data.rings.water.value}}">
-                <input disabled type="text" data-dtype="Number" name="data.rings.fire.value" value="{{data.rings.fire.value}}"><br \>
-                <input type="text" data-dtype="Number" name="data.rings.void.value" value="{{data.rings.void.value}}">
+        <!-- Navigation menu -->
+        <nav class="tabs" data-group="primary">
+            <a class="item" data-tab="stats">Statistiques</a>
+            <a class="item" data-tab="skills">Compétences</a>
+            <a class="item" data-tab="techniques">Techniques</a>
+            <a class="item" data-tab="notes">Notes</a>
+        </nav>
+        <!-- Navigation menu -->
+        <div class="tab" data-tab="stats" data-group="primary">
+            <h3 class="sheet-section-header">Informations du personnage</h3>
+            <!-- <input type="checkbox" name="attr_basic_info_hidden" class="sheet-hide"> --> 
+            <div class="sheet-subheader-content">
+                <table class="sheet-character-table">
+                    <tr>
+                        <td colspan="1"><input type="text" name="data.informations.clan" value="{{data.informations.clan}}"></td>
+                        <td colspan="1"><input type="text" name="data.informations.family" value="{{data.informations.family}}"></td>
+                        <td colspan="2" width="320px"><input type="text" name="data.informations.school" value="{{data.informations.school}}"></td>
+                        <td colspan="1"><input type="text" name="data.attributes.rank.value" value="{{data.attributes.rank.value}}" disabled></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"><span class="sheet-info-label">Clan</span></td>
+                        <td colspan="1"><span class="sheet-info-label">Famille</span></td>
+                        <td colspan="2"><span class="sheet-info-label">Ecole</span></td>
+                        <td colspan="1"><span class="sheet-info-label">Rang</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><input type="text" name="data.attributes.insight.value" value="{{data.attributes.insight.value}}" disabled></td>
+                        {{#if user.isGM}}
+                            <td><input type="text" data-dtype="Number" name="data.attributes.xp.value" value="{{data.attributes.xp.value}}"></td>
+                        {{else}}
+                            <td><input type="text" data-dtype="Number" value="{{data.attributes.xp.value}}" disabled></td>
+                        {{/if}}
+                    </tr>
+                    <tr>
+                        <td colspan="4"><span class="sheet-info-label">Réputation</span></td>
+                        <td><span class="sheet-info-label">Points d'expérience</span></td>
+                    </tr>
+                </table>
+            </div> <!--Character Basic Information -->
 
-                <input type="text" data-dtype="Number" name="data.rings.earth.stamina.value" value="{{data.rings.earth.stamina.value}}">
-                <input type="text" data-dtype="Number" name="data.rings.earth.willpower.value" value="{{data.rings.earth.willpower.value}}">
+    <!--         <h3 class="sheet-section-header">Statistiques</h3>
+            <input type="checkbox" name="attr_basic_stats_hidden" class="sheet-hide"> 
+     -->
+            <div class="sheet-subheader-content">
+                <table>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/righteousness.png"><br \>Droiture</td>
+                        <td colspan="6" rowspan="7" class="sheet-rings">
+                            <input disabled type="text" data-dtype="Number" name="data.rings.earth.value" value="{{data.rings.earth.value}}">
+                            <input disabled type="text" data-dtype="Number" name="data.rings.air.value" value="{{data.rings.air.value}}"><br \>
+                            <input disabled type="text" data-dtype="Number" name="data.rings.water.value" value="{{data.rings.water.value}}">
+                            <input disabled type="text" data-dtype="Number" name="data.rings.fire.value" value="{{data.rings.fire.value}}"><br \>
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.void.value" value="{{data.rings.void.value}}">
 
-                <input type="text" data-dtype="Number" name="data.rings.air.reflexes.value" value="{{data.rings.air.reflexes.value}}">
-                <input type="text" data-dtype="Number" name="data.rings.air.awareness.value" value="{{data.rings.air.awareness.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.earth.stamina.value" value="{{data.rings.earth.stamina.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.earth.willpower.value" value="{{data.rings.earth.willpower.value}}">
 
-                <input type="text" data-dtype="Number" name="data.rings.water.strength.value" value="{{data.rings.water.strength.value}}">
-                <input type="text" data-dtype="Number" name="data.rings.water.perception.value" value="{{data.rings.water.perception.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.air.reflexes.value" value="{{data.rings.air.reflexes.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.air.awareness.value" value="{{data.rings.air.awareness.value}}">
 
-                <input type="text" data-dtype="Number" name="data.rings.fire.agility.value" value="{{data.rings.fire.agility.value}}">
-                <input type="text" data-dtype="Number" name="data.rings.fire.intelligence.value" value="{{data.rings.fire.intelligence.value}}">
-            </td>
-            <td class="sheet-circle-input" colspan="1"><input type="text" data-dtype="Number" name="data.attributes.honor.value" value="{{data.attributes.honor.value}}"></td>
-            <td class="sheet-circle-input" colspan="1"><input type="text" data-dtype="Number" name="data.attributes.glory.value" value="{{data.attributes.glory.value}}"></td>
-            <td class="sheet-circle-input" colspan="1"><input type="text" data-dtype="Number" name="data.attributes.status.value" value="{{data.attributes.status.value}}"></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Courtesy.png"><br \>Courtoisie</td>
-            <td class="sheet-circle-label" colspan="1"><span>Honneur</span></td>
-            <td class="sheet-circle-label" colspan="1"><span>&nbsp;Gloire</span></td>
-            <td class="sheet-circle-label" colspan="1"><span>Statut</span></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Courage.png"><br \>Courage</td>
-            <td><span class="sheet-combat-stats-label">Vide</span></td>
-            <td><input class="sheet-combat-stats" style="width: 65px" type="text" data-dtype="Number" name="data.rings.void.current" value="{{data.rings.void.current}}"><span class="sheet-combat-stats-label">&nbsp;&nbsp;&nbsp; / </span></td>
-            <td><input class="sheet-combat-stats" style="width: 65px" type="text" data-dtype="Number" value="{{data.rings.void.value}}" disabled></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Honor.png"><br \>Honneur</td>
-            <td><button type="button" class="initiative rollable" data-roll="(@rings.air.reflexes.value + @attributes.rank.value)d10kh{{data.rings.air.reflexes.value}}x10" data-label="<h3 style='color:#917c9a;font-style:italic;'>Initiative</h3>">Initiative</button></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Compassion.png"><br \>Compassion</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Sincerity.png"><br \>Sincérité</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Duty.png"><br \>Devoir et Fidélité</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-        
-    </div><!--Character Basic Information -->
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.water.strength.value" value="{{data.rings.water.strength.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.water.perception.value" value="{{data.rings.water.perception.value}}">
+
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.fire.agility.value" value="{{data.rings.fire.agility.value}}">
+                            <input type="number" min="0" max="10" data-dtype="Number" name="data.rings.fire.intelligence.value" value="{{data.rings.fire.intelligence.value}}">
+                        </td>
+                        <td class="sheet-circle-input" colspan="1"><input type="number" min="0" max="10" step="0.1" data-dtype="Number" name="data.attributes.honor.value" value="{{data.attributes.honor.value}}"></td>
+                        <td class="sheet-circle-input" colspan="1"><input type="number" min="0" max="10" step="0.1" data-dtype="Number" name="data.attributes.glory.value" value="{{data.attributes.glory.value}}"></td>
+                        <td class="sheet-circle-input" colspan="1"><input type="number" min="0" max="10" step="0.1" data-dtype="Number" name="data.attributes.status.value" value="{{data.attributes.status.value}}"></td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Courtesy.png"><br \>Courtoisie</td>
+                        <td class="sheet-circle-label" colspan="1"><span>Honneur</span></td>
+                        <td class="sheet-circle-label" colspan="1"><span>&nbsp;Gloire</span></td>
+                        <td class="sheet-circle-label" colspan="1"><span>Statut</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Courage.png"><br \>Courage</td>
+                        <td>Points de vie</td>
+                        <td><input style="width: 65px;background-color: transparent;border: none;text-align: center;" type="number" min="0" max="{{data.character.health.max}}" step="1" data-dtype="Number" name="data.character.health.value" value="{{data.character.health.value}}"><span class="sheet-combat-stats-label">&nbsp;&nbsp;&nbsp; / </span></td>
+                        <td style="text-align: center;">{{data.character.health.max}}</td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Duty.png"><br \>Devoir</td>
+                        <td>Blessures</td>
+                        <td>{{localize (concat 'healthRank' data.character.health.rank)}}</td>
+                        <td>{{#if (eq data.character.health.rank 8)}}{{data.character.health.penalty}}{{else if (ne data.character.health.rank 1)}}Malus de {{data.character.health.penalty}}{{/if}}</td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Honor.png"><br \>Honneur</td>
+                        <td>ND d'armure</td>
+                        <td colspan="2">
+                            {{add (add (multiply data.rings.air.reflexes.value 5) 5) data.inventory.armor.bonus }}
+                            &nbsp;&nbsp;
+                            <select name="data.inventory.armor.bonus" data-dtype="Number">
+                                {{#select data.inventory.armor.bonus}}
+                                    <option value="3">Armure d'Ashigaru</option>
+                                    <option value="5">Armure légère</option>
+                                    <option value="10">Armure lourde</option>
+                                    <option value="12">Armure de cavalerie</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Compassion.png"><br \>Compassion</td>
+                        <td><span class="sheet-combat-stats-label">Vide</span></td>
+                        <td><input class="sheet-combat-stats" style="width: 65px;background-color: transparent;border: none;text-align: center;" type="number" min="0" max="{{data.rings.void.value}}" data-dtype="Number" name="data.rings.void.current" value="{{data.rings.void.current}}"><span class="sheet-combat-stats-label">&nbsp;&nbsp;&nbsp; / </span></td>
+                        <td style="text-align: center;">{{data.rings.void.value}}</td>
+                    </tr>
+                    <tr>
+                        <td class="sheet-stats-center"><img class="sheet-30px" src="systems/l5r/images/Sincerity.png"><br \>Sincérité</td>
+                        <td>Initiative</td>
+                        <td>
+                            <span class="initiative rollable" data-roll="(@rings.air.reflexes.value + @attributes.rank.value)d10kh{{data.rings.air.reflexes.value}}x10" data-label="<h3 style='color:#917c9a;font-style:italic;'>Initiative</h3>">
+                                <a class="inline-roll"><i class="fas fa-dice-d20" style="margin-right: 3px;"></i>{{add data.rings.air.reflexes.value data.attributes.rank.value}}g{{data.rings.air.reflexes.value}}</a>
+                            </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div class="tab" data-tab="skills" data-group="primary">
+            <h3 class="sheet-section-header">Compétences</h3>
+            <!-- <input type="checkbox" name="attr_basic_stats_hidden" class="sheet-hide">  -->
+            <div>
+                <table>
+                    <thead>
+                        <tr class="sheet-skills-header">
+                            <td>Nom de la compétence</td>
+                            <td>Rang</td>
+                            <td>Trait ou Anneau</td>
+                            <td>Jet</td>
+                            <td>Spécialisations & maîtrise</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data.skills as |skill id|}}
+                            <tr>
+                                <td>{{skill.name}}</td>
+                                <td><input type="number" min="0" max="10" data-dtype="Number" name="data.skills.{{id}}.value" value="{{skill.value}}" style="background-color: transparent;border: none;width: 30px;"></td>
+                                <td>{{localize skill.trait}}</td>
+                                {{#if (or (eq skill.trait "agility") (eq skill.trait "intelligence")) }}
+                                    
+                                    <td>
+                                        <span class="initiative rollable" data-roll="({{skill.roll}})d10kh{{skill.keep}}{{#if (ne skill.value 0) }}x10{{/if}}" data-label="<h3 style='color:#D46146;font-style:italic;'>{{skill.name}}</h3>">
+                                            <a class="inline-roll"><i class="fas fa-dice-d20" style="margin-right: 3px;"></i>{{skill.roll}}g{{skill.keep}}</a>
+                                        </span>
+                                    </td>
+                                {{else if (or (eq skill.trait "reflexes") (eq skill.trait "awareness")) }}
+                                    <td>
+                                        <span class="initiative rollable" data-roll="({{skill.roll}})d10kh{{skill.keep}}x10" data-label="<h3 style='color:#917c9a;font-style:italic;'>{{skill.name}}</h3>">
+                                            <a class="inline-roll"><i class="fas fa-dice-d20" style="margin-right: 3px;"></i>{{skill.roll}}g{{skill.keep}}</a>
+                                        </span>
+                                    </td>
+                                {{else if (or (eq skill.trait "perception") (eq skill.trait "strength")) }}
+                                    <td>
+                                        <span class="initiative rollable" data-roll="({{skill.roll}})d10kh{{skill.keep}}x10" data-label="<h3 style='color:#64919e;font-style:italic;'>{{skill.name}}</h3>">
+                                            <a class="inline-roll"><i class="fas fa-dice-d20" style="margin-right: 3px;"></i>{{skill.roll}}g{{skill.keep}}</a>
+                                        </span>
+                                    </td>
+                                {{else}}
+                                    <td>
+                                        <span class="initiative rollable" data-roll="({{skill.roll}})d10kh{{skill.keep}}x10" data-label="<h3 style='color:#474241;font-style:italic;'>{{skill.name}}</h3>">
+                                            <a class="inline-roll"><i class="fas fa-dice-d20" style="margin-right: 3px;"></i>{{skill.roll}}g{{skill.keep}}</a>
+                                        </span>
+                                    </td>
+                                {{/if}}
+                                <td></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab" data-tab="techniques" data-group="primary">
+            <h3 class="sheet-section-header">Techniques d'écoles</h3>
+            <div>
+                <table>
+                    <thead>
+                        <tr class="sheet-skills-header">
+                            <td>Nom de la technique</td>
+                            <td>Effet</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data.techniques as |technique id|}}
+                            <tr>
+                                <td><input type="text" name="data.techniques.{{id}}.name" value="{{technique.name}}"></td>
+                                <td><input type="text" name="data.techniques.{{id}}.effect" value="{{technique.effect}}"></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab" data-tab="notes" data-group="primary">
+            <h3 class="sheet-section-header">Notes</h3>
+            <textarea name="data.others.notes" style="height: 600px">{{data.others.notes}}</textarea>
+        </div>
     </section>
 </form>
 
@@ -130,6 +240,7 @@ Tab Order: Void Earth Fire Air Water - All with White Text */
 .sheet-list-seperator {border-bottom:3px solid black; clear:both; margin-bottom:3px; margin-top:3px;}
 .sheet-30px img, img.sheet-30px {max-height:30px;max-width:30px;vertical-align:bottom;border: none;}
 .sheet-18px img, img.sheet-18px {max-height:18px;max-width:18px;vertical-align:bottom; margin-top:-3px;}
+.sheet-17px img, img.sheet-13px {max-height:13px;max-width:13px;border: none;padding-left: 2px;}
 .sheet-inverted {filter: invert(100%);}
 .sheet-align-right {text-align:right;}
 .sheet-align-top {vertical-align:top;}
@@ -312,7 +423,7 @@ input.sheet-tab-switch-notes:checked ~ div.sheet-tab-character-notes {
 /* Character Sheet Rings */
 
 .sheet-rings {
-   background: url('systems/l5r/images/rings-3.png');
+   background: url('systems/l5r/images/rings.png');
    background-size:705px;
    background-repeat:no-repeat;
    width:670px;
@@ -335,16 +446,16 @@ input.sheet-tab-switch-notes:checked ~ div.sheet-tab-character-notes {
 .sheet-rings input:nth-child(2) {position:absolute; left: 342px; top: 114px;}
 .sheet-rings input:nth-child(4) {position:absolute; left: 257px; top: 176px;}
 .sheet-rings input:nth-child(5) {position:absolute; left: 362px; top: 176px;}
-.sheet-rings input:nth-child(7) {position:absolute; left: 309px; top: 214px;}
+.sheet-rings input:nth-child(7) {position:absolute; left: 318px; top: 209px;}
 
-.sheet-rings input:nth-child(8) {position:absolute; left: 152px; top: 38px; font-size: 21px;}
-.sheet-rings input:nth-child(9) {position:absolute; left: 135px; top: 84px; font-size: 21px;}
-.sheet-rings input:nth-child(10) {position:absolute; left: 457px; top: 38px; font-size: 21px;}
-.sheet-rings input:nth-child(11) {position:absolute; left: 474px; top: 84px; font-size: 21px;}
-.sheet-rings input:nth-child(12) {position:absolute; left: 111px; top: 166px; font-size: 21px;}
-.sheet-rings input:nth-child(13) {position:absolute; left: 94px; top: 213px; font-size: 21px;}
-.sheet-rings input:nth-child(14) {position:absolute; left: 504px; top: 166px; font-size: 21px;}
-.sheet-rings input:nth-child(15) {position:absolute; left: 521px; top: 213px; font-size: 21px;}
+.sheet-rings input:nth-child(8) {position:absolute; left: 169px; top: 36px; font-size: 21px;}
+.sheet-rings input:nth-child(9) {position:absolute; left: 152px; top: 82px; font-size: 21px;}
+.sheet-rings input:nth-child(10) {position:absolute; left: 474px; top: 36px; font-size: 21px;}
+.sheet-rings input:nth-child(11) {position:absolute; left: 491px; top: 82px; font-size: 21px;}
+.sheet-rings input:nth-child(12) {position:absolute; left: 128px; top: 164px; font-size: 21px;}
+.sheet-rings input:nth-child(13) {position:absolute; left: 111px; top: 211px; font-size: 21px;}
+.sheet-rings input:nth-child(14) {position:absolute; left: 521px; top: 164px; font-size: 21px;}
+.sheet-rings input:nth-child(15) {position:absolute; left: 538px; top: 211px; font-size: 21px;}
 
 
 /* Character Sheet Combat Stats */
@@ -529,7 +640,6 @@ th .sheet-icon-question {
 .sheet-help-def .sheet-icon {
     margin-left: -30px
 }
-
 
 
 .sheet-help-content {
@@ -2470,6 +2580,56 @@ input.sheet-npc-minion-switch {
 
 * {
     font-family: "Optima nova LT Bold";
+}
+
+input:focus {
+  box-shadow: 0 0 0 black !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+a.inline-roll {
+    background: unset;
+}
+
+.color-earth {
+    color: #6e9979;
+}
+
+.color-air {
+    color: #917c9a;
+}
+
+.color-fire {
+    color: #D46146;
+}
+
+.color-water {
+    color: #64919e;
+}
+
+.color-void {
+    color: #474241;
+}
+
+.sheet-character-table input:disabled:hover {
+    box-shadow: none;
+    outline: none;
+    border-bottom: 2px solid #9c9b90;
+}
+
+a.item:hover {
+    text-shadow: unset;
 }
 
 </style>

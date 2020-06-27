@@ -8,9 +8,11 @@
                 "school": ""
             },
             "health": {
-                "value": 10,
+                "value": 100,
                 "min": 0,
-                "max": 10
+                "max": 10,
+                "rank": 1,
+                "penalty": 0
             },
             "power": {
                 "value": 5,
@@ -50,10 +52,12 @@
             "rings": {
                 "earth": {
                     "stamina": {
+                        "name": "Constitution",
                         "type": "physical",
                         "value": 2
                     },
                     "willpower": {
+                        "name": "Volonté",
                         "type": "mental",
                         "value": 2
                     },
@@ -61,10 +65,12 @@
                 },
                 "air": {
                     "reflexes": {
+                        "name": "Réflexes",
                         "type": "physical",
                         "value": 2
                     },
                     "awareness": {
+                        "name": "Intuition",
                         "type": "mental",
                         "value": 2
                     },
@@ -72,10 +78,12 @@
                 },
                 "fire": {
                     "agility": {
+                        "name": "Agilité",
                         "type": "physical",
                         "value": 2
                     },
                     "intelligence": {
+                        "name": "Intelligence",
                         "type": "mental",
                         "value": 2
                     },
@@ -83,10 +91,12 @@
                 },
                 "water": {
                     "strength": {
+                        "name": "Force",
                         "type": "physical",
                         "value": 2
                     },
                     "perception": {
+                        "name": "Perception",
                         "type": "mental",
                         "value": 2
                     },
@@ -101,12 +111,467 @@
                 }
             },
             "skills": {
-                "kenjutsu": {
-                    "value": 0,
+                "acting": {
+                    "name": "Comédie",
+                    "type": "high",
+                    "sub_type": ["social", "perform"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "artisan": {
+                    "name": "Art",
+                    "type": "high",
+                    "sub_type": ["macro"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "calligraphy": {
+                    "name": "Calligraphie",
+                    "type": "high",
+                    "sub_type": ["artisan"],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "courtier": {
+                    "name": "Courtisan",
+                    "type": "high",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "divination": {
+                    "name": "Divination",
+                    "type": "high",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "etiquette": {
+                    "name": "Etiquette",
+                    "type": "high",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "games": {
+                    "name": "Jeu",
+                    "type": "high",
+                    "sub_type": ["macro"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "investigation": {
+                    "name": "Enquête",
+                    "type": "high",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "perception",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "lore": {
+                    "name": "Connaissance",
+                    "type": "high",
+                    "sub_type": ["macro"],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "medicine": {
+                    "name": "Médecine",
+                    "type": "high",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "meditation": {
+                    "name": "Méditation",
+                    "type": "high",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "void",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "perform": {
+                    "name": "Spectacle",
+                    "type": "high",
+                    "sub_type": ["macro", "social"],
+                    "emphases": {},
                     "trait": "agility",
-                    "sub-type": "weapon",
-                    "emphases": 0
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "sincerity": {
+                    "name": "Sincérité",
+                    "type": "high",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "spellcraft": {
+                    "name": "Art de la magie",
+                    "type": "high",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "tea_ceremony": {
+                    "name": "Cérémonie du thé",
+                    "type": "high",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "void",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "athletics": {
+                    "name": "Athlétisme",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "strength",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "battle": {
+                    "name": "Art de la guerre",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "perception",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "defense": {
+                    "name": "Défense",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "reflexes",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "horsemanship": {
+                    "name": "Equitation",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "hunting": {
+                    "name": "Chasse",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "perception",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "iaijutsu": {
+                    "name": "Iaijutsu",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "reflexes",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "jiujutsu": {
+                    "name": "Jiujutsu",
+                    "type": "bugei",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "weapons": {
+                    "name": "Armes",
+                    "type": "bugei",
+                    "sub_type": ["macro"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "chain_weapons": {
+                    "name": "Armes à chaînes",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "heavy_weapons": {
+                    "name": "Armes lourdes",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "kenjutsu": {
+                    "name": "Kenjutsu",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "knives": {
+                    "name": "Couteaux",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "kyujutsu": {
+                    "name": "Kyujutsu",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "reflexes",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "ninjutsu": {
+                    "name": "Ninjutsu",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "polearms": {
+                    "name": "Armes d'hast",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "spears": {
+                    "name": "Lances",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "staves": {
+                    "name": "Bâtons",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "war_fan": {
+                    "name": "Eventails de guerre",
+                    "type": "bugei",
+                    "sub_type": ["weapon"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "animal_handling": {
+                    "name": "Elevage",
+                    "type": "merchant",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "commerce": {
+                    "name": "Commerce",
+                    "type": "merchant",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "craft": {
+                    "name": "Artisanat",
+                    "type": "merchant",
+                    "sub_type": ["macro"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "engineering": {
+                    "name": "Ingénierie",
+                    "type": "merchant",
+                    "sub_type": ["craft"],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "sailing": {
+                    "name": "Navigation",
+                    "type": "merchant",
+                    "sub_type": ["craft"],
+                    "emphases": {},
+                    "trait": "intelligence",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "forgery": {
+                    "name": "Contrefaçon",
+                    "type": "low",
+                    "sub_type": ["craft"],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "intimidation": {
+                    "name": "Intimidation",
+                    "type": "low",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "sleight_of_hand": {
+                    "name": "Tour de passe-passe",
+                    "type": "low",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "stealth": {
+                    "name": "Discrétion",
+                    "type": "low",
+                    "sub_type": [],
+                    "emphases": {},
+                    "trait": "agility",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
+                },
+                "temptation": {
+                    "name": "Tentation",
+                    "type": "low",
+                    "sub_type": ["social"],
+                    "emphases": {},
+                    "trait": "awareness",
+                    "roll": "0",
+                    "keep": "2",
+                    "value": 0
                 }
+            },
+            "inventory": {
+                "armor": {
+                    "bonus": 0
+                }
+            },
+            "techniques": {
+                "rank1": {
+                    "name": "",
+                    "effect": ""
+                },
+                "rank2": {
+                    "name": "",
+                    "effect": ""
+                },
+                "rank3": {
+                    "name": "",
+                    "effect": ""
+                },
+                "rank4": {
+                    "name": "",
+                    "effect": ""
+                },
+                "rank5": {
+                    "name": "",
+                    "effect": ""
+                }
+            },
+            "others": {
+                "current_tab": "stats",
+                "notes": ""
             }
         }
     },
